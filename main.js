@@ -27,6 +27,17 @@ let targetSpeed = 100;
 const vertex = new THREE.Vector3();
 const color = new THREE.Color();
 
+// Ball properties
+const ballRadius = 1;
+const ballColor = 0x00ff00;
+const ballMaterial = new THREE.MeshDepthMaterial({});
+const ballGeometry = new THREE.SphereGeometry(ballRadius, 32, 32);
+const ball = new THREE.Mesh(ballGeometry, ballMaterial);
+
+let isMouseDown = false;
+let spawnInterval;
+
+
 init();
 animate();
 
@@ -65,6 +76,8 @@ function init() {
   // scene.fog = new THREE.Fog(0xffffff, 0, 750);
 
 
+  scene.add(ball);
+  ball.position.set(0, 10, 0);
   /*
   SETUP LIGHTS
 
@@ -81,6 +94,8 @@ function init() {
 
   const light = new THREE.HemisphereLight(0x75C3E0, 0x5EC0E1, 2.5);
   // const light = new THREE.AmbientLight(0x404040); // soft white light
+
+
   light.position.set(0.5, 1, 0.75);
   scene.add(light);
 
@@ -195,6 +210,20 @@ function init() {
   document.addEventListener('keydown', onKeyDown);
   document.addEventListener('keyup', onKeyUp);
 
+  document.addEventListener('mousedown', function (event) {
+    if (event.button === 0) { // Left mouse button
+      isMouseDown = true;
+      spawnInterval = setInterval(spawnBall, 10); // Spawn a ball every 10 ms
+    }
+  });
+
+  document.addEventListener('mouseup', function (event) {
+    if (event.button === 0) { // Left mouse button
+      isMouseDown = false;
+      clearInterval(spawnInterval);
+    }
+  });
+
   /*
   SETUP RAYCASTER
 
@@ -262,7 +291,7 @@ function init() {
 
   floorGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colorsFloor, 3));
 
-  const floorMaterial = new THREE.MeshBasicMaterial({ flatShading: true, vertexColors: false });
+  const floorMaterial = new THREE.MeshBasicMaterial({ vertexColors: false });
 
   const floor = new THREE.Mesh(floorGeometry, floorMaterial);
   scene.add(floor);
@@ -367,14 +396,14 @@ function animate() {
       canJump = true;
     }
 
-    // Gradually move towards the target velocity
+    // Gradually move towards the target velocity to avoid sliding
     velocity.x = THREE.MathUtils.lerp(velocity.x, targetVelocity.x, lerpFactorX);
     velocity.y = THREE.MathUtils.lerp(velocity.y, targetVelocity.y, lerpFactorY);
-    velocity.z = THREE.MathUtils.lerp(velocity.z, targetVelocity.z, lerpFactorX); // Assuming the same lerp factor for z
+    velocity.z = THREE.MathUtils.lerp(velocity.z, targetVelocity.z, lerpFactorX);
 
     controls.moveRight(- velocity.x * deltaTime);
     controls.moveForward(- velocity.z * deltaTime);
-    controls.getObject().position.y += (velocity.y * deltaTime); // new behavior
+    controls.getObject().position.y += (velocity.y * deltaTime);
 
     if (controls.getObject().position.y < 30) {
 
@@ -390,4 +419,34 @@ function animate() {
 
   renderer.render(scene, camera);
 
+}
+
+function spawnBall() {
+  // Create a raycaster and set its origin and direction
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(new THREE.Vector2(), camera);
+
+  // Find the closest object that the ray intersects with
+  const intersects = raycaster.intersectObjects(objects, true);
+
+  if (intersects.length > 0) {
+    // The first element of the intersects array is the closest object
+    const closestIntersect = intersects[0];
+
+    // Create a new ball
+    const ballRadius = 1;
+    const ballColor = 0x00ff00;
+    const ballMaterial = new THREE.MeshBasicMaterial({ color: ballColor });
+    const ballGeometry = new THREE.SphereGeometry(ballRadius, 32, 32);
+    const ball = new THREE.Mesh(ballGeometry, ballMaterial);
+
+    // Set the ball's position to the intersection point
+    ball.position.copy(closestIntersect.point);
+
+    // Add the ball to the scene
+    scene.add(ball);
+
+    // Add the ball to an array to keep track of all balls
+    objects.push(ball);
+  }
 }
