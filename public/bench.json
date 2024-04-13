@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "version": 4.5,
+    "type": "Object",
+    "generator": "Object3D.toJSON"
+  },
+  "geometries": [
+    {
+      "uuid": "f2429a21-ba16-42f7-a32c-73840b3bb2f5",
+      "type": "BoxGeometry",
+      "width": 1,
+      "height": 1,
+      "depth": 1,
+      "widthSegments": 1,
+      "heightSegments": 1,
+      "depthSegments": 1
+    },
+    {
+      "uuid": "bbd36340-b583-43be-9320-b0b7ee3732fe",
+      "type": "BoxGeometry",
+      "width": 1,
+      "height": 1,
+      "depth": 1,
+      "widthSegments": 1,
+      "heightSegments": 1,
+      "depthSegments": 1
+    }
+  ],
+  "materials": [
+    {
+      "uuid": "671ed745-8446-40f2-85dd-f9556eeeeb90",
+      "type": "MeshStandardMaterial",
+      "color": 5719879,
+      "roughness": 1,
+      "metalness": 0,
+      "emissive": 0,
+      "envMapIntensity": 1,
+      "depthFunc": 3,
+      "depthTest": true,
+      "depthWrite": true,
+      "colorWrite": true,
+      "stencilWrite": false,
+      "stencilWriteMask": 255,
+      "stencilFunc": 519,
+      "stencilRef": 0,
+      "stencilFuncMask": 255,
+      "stencilFail": 7680,
+      "stencilZFail": 7680,
+      "stencilZPass": 7680
+    },
+    {
+      "uuid": "64edd851-b1f2-4e60-a204-54e75055042f",
+      "type": "MeshStandardMaterial",
+      "name": "Bench Material",
+      "color": 7627619,
+      "roughness": 1,
+      "metalness": 0,
+      "emissive": 0,
+      "envMapIntensity": 1,
+      "depthFunc": 3,
+      "depthTest": true,
+      "depthWrite": true,
+      "colorWrite": true,
+      "stencilWrite": false,
+      "stencilWriteMask": 255,
+      "stencilFunc": 519,
+      "stencilRef": 0,
+      "stencilFuncMask": 255,
+      "stencilFail": 7680,
+      "stencilZFail": 7680,
+      "stencilZPass": 7680
+    }
+  ],
+  "object": {
+    "uuid": "a32f9934-56a7-479f-9d8b-0705bd3806c5",
+    "type": "Group",
+    "name": "Bench",
+    "layers": 1,
+    "matrix": [
+      1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.49538767661344274, 0, 1
+    ],
+    "children": [
+      {
+        "uuid": "1b9b8770-b87b-439f-93a8-64e5f5ac2d00",
+        "type": "Mesh",
+        "name": "BenchBack",
+        "layers": 1,
+        "matrix": [
+          4, 0, 0, 0, 0, 0.04411077756162697, 0.08974541382660546, 0, 0,
+          -0.8974541382660546, 0.4411077756162697, 0, 0, 0.9442042926442495,
+          -0.6844297611912942, 1
+        ],
+        "geometry": "f2429a21-ba16-42f7-a32c-73840b3bb2f5",
+        "material": "671ed745-8446-40f2-85dd-f9556eeeeb90"
+      },
+      {
+        "uuid": "8b2f65de-f366-437f-89dc-b8c497df4077",
+        "type": "Mesh",
+        "name": "BenchLeg2",
+        "layers": 1,
+        "matrix": [
+          0.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0.1, 0, 1.8306936048285622, 0,
+          0.31000054564123863, 1
+        ],
+        "geometry": "bbd36340-b583-43be-9320-b0b7ee3732fe",
+        "material": "64edd851-b1f2-4e60-a204-54e75055042f"
+      },
+      {
+        "uuid": "fefbfe5a-c4e2-4c5b-b61f-38da5be86baf",
+        "type": "Mesh",
+        "name": "BenchLeg1",
+        "layers": 1,
+        "matrix": [
+          0.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0.1, 0, 1.8273612699902275, 0,
+          -0.3417555596935609, 1
+        ],
+        "geometry": "bbd36340-b583-43be-9320-b0b7ee3732fe",
+        "material": "64edd851-b1f2-4e60-a204-54e75055042f"
+      },
+      {
+        "uuid": "4960fce2-35c6-4cf4-b981-90eb8ba0785a",
+        "type": "Mesh",
+        "name": "BenchLeg2",
+        "layers": 1,
+        "matrix": [
+          0.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0.1, 0, -1.8614135300864885, 0,
+          0.31000054564123863, 1
+        ],
+        "geometry": "bbd36340-b583-43be-9320-b0b7ee3732fe",
+        "material": "64edd851-b1f2-4e60-a204-54e75055042f"
+      },
+      {
+        "uuid": "1899a6d4-5509-45fb-b455-49b530640c56",
+        "type": "Mesh",
+        "name": "BenchLeg1",
+        "layers": 1,
+        "matrix": [
+          0.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0.1, 0, -1.8614135300864885, 0,
+          -0.3417555596935609, 1
+        ],
+        "geometry": "bbd36340-b583-43be-9320-b0b7ee3732fe",
+        "material": "64edd851-b1f2-4e60-a204-54e75055042f"
+      },
+      {
+        "uuid": "2915ed51-a72f-4c12-a3a6-4b51e98e1c37",
+        "type": "Mesh",
+        "name": "BenchSeat",
+        "layers": 1,
+        "matrix": [
+          4, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 1, 0, 0, 0.5166937295110932, 0, 1
+        ],
+        "geometry": "f2429a21-ba16-42f7-a32c-73840b3bb2f5",
+        "material": "671ed745-8446-40f2-85dd-f9556eeeeb90"
+      }
+    ]
+  }
+}
