@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+import { PointerLockControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/FirstPersonControls.js';
 
 let camera, scene, renderer, controls;
 
